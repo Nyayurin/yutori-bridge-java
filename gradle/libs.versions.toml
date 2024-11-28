@@ -1,5 +1,5 @@
 [versions]
-yutori = "1f4cdfb7d8e59d07d45be79b7499aca41362cf37"
+yutori = "10b1b97900331bc8fea475fa9f68627a5540b9ca"
 agp = "8.6.1"
 
 [libraries]

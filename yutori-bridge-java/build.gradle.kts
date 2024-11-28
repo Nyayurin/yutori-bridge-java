@@ -37,6 +37,7 @@ publishing {
         withType<MavenPublication> {
             pom {
                 name = "Yutori-Bridge-Java"
+                artifactId = "yutori-bridge-java"
                 version = System.getenv("VERSION")
                 description = "Kotlin Multiplatform library"
                 url = "https://github.com/Nyayurin/yutori-bridge-java"
