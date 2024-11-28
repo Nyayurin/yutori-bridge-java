@@ -1,9 +1,6 @@
 plugins {
     kotlin("jvm") version "2.0.21"
-    id("maven-publish")
 }
-
-group = "cn.yurin.yutori.bridge"
 
 dependencies {
     api(libs.yutori)
@@ -14,18 +11,7 @@ kotlin {
 }
 
 publishing {
-    repositories {
-        maven {
-            name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/Nyayurin/yutori-bridge-java")
-            credentials {
-                username = System.getenv("GITHUB_ACTOR")
-                password = System.getenv("GITHUB_TOKEN")
-            }
-        }
-    }
-    publications.register<MavenPublication>("gpr") {
-        from(components["java"])
+    publications.withType<MavenPublication> {
         pom {
             name = "Yutori-Bridge-Java"
             version = System.getenv("VERSION")
