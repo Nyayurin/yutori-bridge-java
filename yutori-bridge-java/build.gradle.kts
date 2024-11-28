@@ -24,7 +24,8 @@ publishing {
             }
         }
     }
-    publications.withType<MavenPublication> {
+    publications.register<MavenPublication>("gpr") {
+        from(components["java"])
         pom {
             name = "Yutori-Bridge-Java"
             version = System.getenv("VERSION")
