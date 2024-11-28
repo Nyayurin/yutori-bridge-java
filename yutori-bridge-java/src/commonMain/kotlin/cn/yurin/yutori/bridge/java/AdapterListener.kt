@@ -1,3 +1,5 @@
+@file:Suppress("unused", "MemberVisibilityCanBePrivate")
+
 package cn.yurin.yutori.bridge.java
 
 import cn.yurin.yutori.*

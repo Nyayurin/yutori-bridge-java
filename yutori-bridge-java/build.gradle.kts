@@ -1,20 +1,39 @@
 plugins {
-    kotlin("jvm") version "2.0.21"
-}
-
-dependencies {
-    api(libs.yutori)
+    kotlin("multiplatform") version "2.0.21"
+    alias(libs.plugins.android.library)
 }
 
 kotlin {
     jvmToolchain(17)
+
+    jvm()
+
+    androidTarget {
+        publishLibraryVariants("release", "debug")
+    }
+
+    sourceSets {
+        commonMain.dependencies {
+            api(libs.yutori)
+        }
+    }
+}
+
+android {
+    namespace = "cn.yurin.yutori.bridge.java"
+    compileSdk = 34
+
+    defaultConfig {
+        minSdk = 24
+    }
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
 }
 
 publishing {
     publications {
-        register<MavenPublication>("gpr") {
-            from(components["java"])
-        }
         withType<MavenPublication> {
             pom {
                 name = "Yutori-Bridge-Java"
