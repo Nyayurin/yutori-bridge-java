@@ -17,7 +17,7 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
       - run: chmod +x ./gradlew
       - name: Publish package
-        run: ./gradlew publish
+        run: ./gradlew publishGprPublicationToGitHubPackagesRepository
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           VERSION: ${{ github.ref_name }}
