@@ -52,7 +52,7 @@ yutori-bridge-java = "version"
 yutori-bridge-java = { module = "cn.yurin.yutori.bridge:yutori-bridge-java", version.ref = "yutori-bridge-java" }
 ```
 
-请从 [Github Packages](https://github.com/Nyayurin?tab=packages&repo_name=yutori-bridge-java) 获取版本<br>
+请从 [Github Packages](https://github.com/Nyayurin/yutori-bridge-java/packages/2328594) 获取版本<br>
 对于稳定版, 它的版本号应该和 Release 中的 tag 一致<br>
 对于开发板, 它的版本号应该和 Commit 的完整 SHA 值一致<br>
 要获取一个 Commit 的完整 SHA 值, 请在 Commits 页面对应 Commit 处点击 Commit ID 右侧的复制按钮(Copy full SHA for *******)

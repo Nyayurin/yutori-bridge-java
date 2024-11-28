@@ -1,24 +1,18 @@
-@file:Suppress("unused", "MemberVisibilityCanBePrivate")
+@file:Suppress("MemberVisibilityCanBePrivate")
 
 package cn.yurin.yutori.bridge.java
 
 import cn.yurin.yutori.*
-import cn.yurin.yutori.message.MessageBuilder
 import cn.yurin.yutori.message.element.MessageElement
 import kotlinx.coroutines.runBlocking
 
-class JavaActionRoot(
+class JavaActionRootBridge(
     val actions: ActionRoot,
 ) {
     fun channelGet(
         channelId: String,
         vararg contents: Pair<String, Any>,
     ) = runBlocking { actions.channel.get(channelId, *contents) }
-
-    fun channelList(
-        guildId: String,
-        vararg contents: Pair<String, Any>,
-    ) = runBlocking { actions.channel.list(guildId, null, *contents) }
 
     fun channelList(
         guildId: String,
@@ -54,8 +48,6 @@ class JavaActionRoot(
         vararg contents: Pair<String, Any>,
     ) = runBlocking { actions.guild.get(guildId, *contents) }
 
-    fun guildList(vararg contents: Pair<String, Any>) = runBlocking { actions.guild.list(null, *contents) }
-
     fun guildList(
         next: String?,
         vararg contents: Pair<String, Any>,
@@ -76,20 +68,9 @@ class JavaActionRoot(
 
     fun guildMemberList(
         guildId: String,
-        vararg contents: Pair<String, Any>,
-    ) = runBlocking { actions.guild.member.list(guildId, null, *contents) }
-
-    fun guildMemberList(
-        guildId: String,
         next: String?,
         vararg contents: Pair<String, Any>,
     ) = runBlocking { actions.guild.member.list(guildId, next, *contents) }
-
-    fun guildMemberKick(
-        guildId: String,
-        userId: String,
-        vararg contents: Pair<String, Any>,
-    ) = runBlocking { actions.guild.member.kick(guildId, userId, null, *contents) }
 
     fun guildMemberKick(
         guildId: String,
@@ -134,11 +115,6 @@ class JavaActionRoot(
 
     fun guildRoleList(
         guildId: String,
-        vararg contents: Pair<String, Any>,
-    ) = runBlocking { actions.guild.role.list(guildId, null, *contents) }
-
-    fun guildRoleList(
-        guildId: String,
         next: String?,
         vararg contents: Pair<String, Any>,
     ) = runBlocking { actions.guild.role.list(guildId, next, *contents) }
@@ -170,12 +146,6 @@ class JavaActionRoot(
         vararg contents: Pair<String, Any>,
     ) = runBlocking { actions.message.create(channelId, content, *contents) }
 
-    fun messageCreate(
-        channelId: String,
-        content: MessageBuilder.() -> Unit,
-        vararg contents: Pair<String, Any>,
-    ) = runBlocking { actions.message.create(channelId, content, *contents) }
-
     fun messageGet(
         channelId: String,
         messageId: String,
@@ -194,39 +164,6 @@ class JavaActionRoot(
         content: List<MessageElement>,
         vararg contents: Pair<String, Any>,
     ) = runBlocking { actions.message.update(channelId, messageId, content, *contents) }
-
-    fun messageUpdate(
-        channelId: String,
-        messageId: String,
-        content: MessageBuilder.() -> Unit,
-        vararg contents: Pair<String, Any>,
-    ) = runBlocking { actions.message.update(channelId, messageId, content, *contents) }
-
-    fun messageList(
-        channelId: String,
-        vararg contents: Pair<String, Any>,
-    ) = runBlocking { actions.message.list(channelId, null, null, null, null, *contents) }
-
-    fun messageList(
-        channelId: String,
-        next: String?,
-        vararg contents: Pair<String, Any>,
-    ) = runBlocking { actions.message.list(channelId, next, null, null, null, *contents) }
-
-    fun messageList(
-        channelId: String,
-        next: String?,
-        direction: BidiPagingList.Direction?,
-        vararg contents: Pair<String, Any>,
-    ) = runBlocking { actions.message.list(channelId, next, direction, null, null, *contents) }
-
-    fun messageList(
-        channelId: String,
-        next: String?,
-        direction: BidiPagingList.Direction?,
-        limit: Number?,
-        vararg contents: Pair<String, Any>,
-    ) = runBlocking { actions.message.list(channelId, next, direction, limit, null, *contents) }
 
     fun messageList(
         channelId: String,
@@ -248,13 +185,6 @@ class JavaActionRoot(
         channelId: String,
         messageId: String,
         emoji: String,
-        vararg contents: Pair<String, Any>,
-    ) = runBlocking { actions.reaction.delete(channelId, messageId, emoji, null, *contents) }
-
-    fun reactionDelete(
-        channelId: String,
-        messageId: String,
-        emoji: String,
         userId: String?,
         vararg contents: Pair<String, Any>,
     ) = runBlocking { actions.reaction.delete(channelId, messageId, emoji, userId, *contents) }
@@ -262,22 +192,9 @@ class JavaActionRoot(
     fun reactionClear(
         channelId: String,
         messageId: String,
-        vararg contents: Pair<String, Any>,
-    ) = runBlocking { actions.reaction.clear(channelId, messageId, null, *contents) }
-
-    fun reactionClear(
-        channelId: String,
-        messageId: String,
         emoji: String?,
         vararg contents: Pair<String, Any>,
     ) = runBlocking { actions.reaction.clear(channelId, messageId, emoji, *contents) }
-
-    fun reactionList(
-        channelId: String,
-        messageId: String,
-        emoji: String,
-        vararg contents: Pair<String, Any>,
-    ) = runBlocking { actions.reaction.list(channelId, messageId, emoji, null, *contents) }
 
     fun reactionList(
         channelId: String,
@@ -294,27 +211,14 @@ class JavaActionRoot(
 
     fun userChannelCreate(
         userId: String,
-        vararg contents: Pair<String, Any>,
-    ) = runBlocking { actions.user.channel.create(userId, null, *contents) }
-
-    fun userChannelCreate(
-        userId: String,
         guildId: String?,
         vararg contents: Pair<String, Any>,
     ) = runBlocking { actions.user.channel.create(userId, guildId, *contents) }
-
-    fun friendList(vararg contents: Pair<String, Any>) = runBlocking { actions.friend.list(null, *contents) }
 
     fun friendList(
         next: String?,
         vararg contents: Pair<String, Any>,
     ) = runBlocking { actions.friend.list(next, *contents) }
-
-    fun friendApprove(
-        messageId: String,
-        approve: Boolean,
-        vararg contents: Pair<String, Any>,
-    ) = runBlocking { actions.friend.approve(messageId, approve, null, *contents) }
 
     fun friendApprove(
         messageId: String,
@@ -326,11 +230,6 @@ class JavaActionRoot(
     fun uploadCreate(vararg contents: FormData) = runBlocking { actions.upload.create(*contents) }
 
     fun adminLoginList(vararg contents: Pair<String, Any>) = runBlocking { actions.admin.login.list(*contents) }
-
-    fun adminWebhookCreate(
-        url: String,
-        vararg contents: Pair<String, Any>,
-    ) = runBlocking { actions.admin.webhook.create(url, null, *contents) }
 
     fun adminWebhookCreate(
         url: String,
