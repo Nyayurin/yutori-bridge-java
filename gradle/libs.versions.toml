@@ -1,0 +1,5 @@
+[versions]
+yutori = "1f4cdfb7d8e59d07d45be79b7499aca41362cf37"
+
+[libraries]
+yutori = { module = "cn.yurin.yutori:yutori", version.ref = "yutori" }
