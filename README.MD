@@ -4,10 +4,6 @@
 
 Yutori 的 Java 桥接模块
 
-| Module             | Platforms            |
-|--------------------|----------------------|
-| yutori-bridge-java | JVM(17), Android(17) |
-
 </div>
 
 ## 如何使用
