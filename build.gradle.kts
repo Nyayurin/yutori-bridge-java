@@ -1,6 +1,5 @@
 plugins {
-    kotlin("multiplatform") version "2.0.21" apply false
-    alias(libs.plugins.android.library) apply false
+    kotlin("jvm") version "2.0.21" apply false
 }
 
 subprojects {
