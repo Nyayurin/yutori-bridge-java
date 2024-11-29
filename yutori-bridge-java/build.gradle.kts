@@ -37,6 +37,8 @@ publishing {
                     url = "https://github.com/Nyayurin/yutori-bridge-java"
                 }
             }
+
+            from(components["java"])
         }
     }
 }
