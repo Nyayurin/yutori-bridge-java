@@ -10,7 +10,13 @@ import java.util.List;
 import java.util.Map;
 
 @SuppressWarnings({"unused", "unchecked"})
-public record JavaActionRoot(JavaActionRootBridge bridge) {
+public class JavaActionRoot {
+    private final JavaActionRootBridge bridge;
+
+    public JavaActionRoot(JavaActionRootBridge bridge) {
+        this.bridge = bridge;
+    }
+
     public Result<Channel> channelGet(
             String channelId,
             Pair<String, Object>... contents

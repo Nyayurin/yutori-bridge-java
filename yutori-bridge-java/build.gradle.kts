@@ -12,7 +12,7 @@ java {
 }
 
 kotlin {
-    jvmToolchain(17)
+    jvmToolchain(8)
 }
 
 publishing {
