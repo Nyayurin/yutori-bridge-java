@@ -13,7 +13,7 @@ data class JavaAdapterContext(
     companion object {
         fun from(context: AdapterContext<*>) =
             JavaAdapterContext(
-                actions = JavaActionRoot(JavaActionRootBridge(context.actions)),
+                actions = JavaActionRoot(context.actions),
                 event = JavaEvent(context.event),
                 yutori = context.yutori,
             )

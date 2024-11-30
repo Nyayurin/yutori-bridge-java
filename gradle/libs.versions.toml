@@ -1,5 +1,9 @@
 [versions]
-yutori = "be90d350677442ef49f0cf6aa857b87b786fe25e"
+yutori = "83465ece99a41e761631baeebf86af7d70bd51da"
+agp = "8.6.1"
 
 [libraries]
 yutori = { module = "cn.yurin.yutori:yutori", version.ref = "yutori" }
+
+[plugins]
+android-library = { id = "com.android.library", version.ref = "agp" }

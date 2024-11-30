@@ -4,6 +4,10 @@
 
 Yutori 的 Java 桥接模块
 
+| Module             | Platforms          |
+|--------------------|--------------------|
+| yutori-bridge-java | JVM(8), Android(8) |
+
 </div>
 
 ## 如何使用
@@ -37,7 +41,12 @@ maven {
 引入依赖
 
 ```kotlin
-implementation(libs.yutori.bridge.java)
+// 如果你是 KMP 项目, 请使用这个
+implementation(libs.yutori.bridge.java.multiplatform)
+// 如果你不知道什么是 KMP, 请使用下面的
+implementation(libs.yutori.bridge.java.jvm)
+implementation(libs.yutori.bridge.java.android.debug)
+implementation(libs.yutori.bridge.java.android.release)
 ```
 
 ```toml
@@ -45,10 +54,13 @@ implementation(libs.yutori.bridge.java)
 yutori-bridge-java = "version"
 
 [libraries]
-yutori-bridge-java = { module = "cn.yurin.yutori.bridge:yutori-bridge-java", version.ref = "yutori-bridge-java" }
+yutori-bridge-java-multiplatform = { module = "cn.yurin.yutori.bridge:yutori-bridge", version.ref = "yutori-bridge-java" }
+yutori-bridge-java-jvm = { module = "cn.yurin.yutori.bridge:yutori-bridge-java", version.ref = "yutori-bridge-java" }
+yutori-bridge-java-android-debug = { module = "cn.yurin.yutori.bridge:yutori-bridge-android-debug", version.ref = "yutori-bridge-java" }
+yutori-bridge-java-android-release = { module = "cn.yurin.yutori.bridge:yutori-bridge-android-release", version.ref = "yutori-bridge-java" }
 ```
 
-请从 [Github Packages](https://github.com/Nyayurin/yutori-bridge-java/packages/2328594) 获取版本<br>
+请从 [Github Packages](https://github.com/Nyayurin?tab=packages&repo_name=yutori-bridge-java) 获取版本<br>
 对于稳定版, 它的版本号应该和 Release 中的 tag 一致<br>
 对于开发板, 它的版本号应该和 Commit 的完整 SHA 值一致<br>
 要获取一个 Commit 的完整 SHA 值, 请在 Commits 页面对应 Commit 处点击 Commit ID 右侧的复制按钮(Copy full SHA for *******)
@@ -92,8 +104,7 @@ public class Main {
 添加仓库
 
 ```sbt
-credentials +=
-  Credentials("GitHub Package Registry", "maven.pkg.github.com", sys.env("GITHUB_ACTOR"), sys.env("GITHUB_TOKEN"))
+credentials += Credentials("GitHub Package Registry", "maven.pkg.github.com", sys.env("GITHUB_ACTOR"), sys.env("GITHUB_TOKEN"))
 
 resolvers += "GitHub Package Registry" at "https://maven.pkg.github.com/Nyayurin/yutori-bridge-java"
 ```
@@ -101,7 +112,7 @@ resolvers += "GitHub Package Registry" at "https://maven.pkg.github.com/Nyayurin
 引入依赖
 
 ```sbt
-libraryDependencies += "cn.yurin.yutori.bridge" % "yutori-bridge-java" % "version"
+libraryDependencies += "cn.yurin.yutori.bridge" % "yutori-bridge-java-jvm" % "version"
 ```
 
 使用
@@ -175,7 +186,7 @@ def main(): Unit =
 
 ```xml
 <MavenReference
-        Include="cn.yurin.yutori.bridge:yutori-bridge-java"
+        Include="cn.yurin.yutori.bridge:yutori-bridge-java-jvm"
         version="version"/>
 ```
 
